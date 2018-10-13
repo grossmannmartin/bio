@@ -1,0 +1,7 @@
+parameters:
+    ignoreErrors:
+        # Wrong docblock in external library
+        - '#Parameter \#2 \$key of method Lcobucci\\JWT\\Token::verify\(\) expects string, Lcobucci\\JWT\\Signer\\Key given\.#'
+includes:
+    - vendor/phpstan/phpstan-nette/extension.neon
+    - vendor/phpstan/phpstan-nette/rules.neon

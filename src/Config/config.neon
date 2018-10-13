@@ -1,0 +1,68 @@
+extensions:
+    dbal: Nettrine\DBAL\DI\DbalExtension
+    orm: Nettrine\ORM\DI\OrmExtension
+    orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+    orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    api: Apitte\Core\DI\ApiExtension
+    middlewares: Contributte\Middlewares\DI\MiddlewaresExtension
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+    orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
+
+
+
+
+
+tracy:
+    browser: open /Applications/Safari.app
+    showLocation: true
+
+
+console:
+    name: Martin Grossmann / Bio
+    url: https://vyvoj.net
+    lazy: true
+
+
+middlewares:
+    middlewares:
+        - Contributte\Middlewares\TryCatchMiddleware
+        - Contributte\Middlewares\AutoBasePathMiddleware
+        - Apitte\Middlewares\ApiMiddleware
+api:
+    debug: %debugMode%
+    plugins:
+        Apitte\Debug\DI\DebugPlugin:
+        Apitte\Middlewares\DI\MiddlewaresPlugin:
+        Apitte\Core\DI\Plugin\CoreDecoratorPlugin:
+        Apitte\Core\DI\Plugin\CoreMappingPlugin:
+        Apitte\Negotiation\DI\NegotiationPlugin:
+            unification: on
+            catchException: on
+
+dbal:
+    debug: %debugMode%
+    connection:
+        host: 127.0.0.1
+        user: user
+        password: pass
+        dbname: db
+        driver: pdo_pgsql
+        types:
+            email:
+                class: Bio\Core\Doctrine\Types\EmailType
+                commented: false
+        typesMapping:
+            email: string
+
+
+orm.annotations:
+    debug: %debugMode%
+    cache: Doctrine\Common\Cache\VoidCache
+    paths:
+        - %appDir%/App
+
+orm:
+    configuration:
+        proxyDir: '%tempDir%/proxies'
+        autoGenerateProxyClasses: false
+

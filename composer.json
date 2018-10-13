@@ -1,0 +1,56 @@
+{
+    "name": "grossmannmartin/bio",
+    "description": "My Personal Web and example of my skills.",
+    "type": "project",
+    "license": "CC-BY-4.0",
+    "authors": [
+        {
+            "name": "Martin Grossmann",
+            "email": "martin@vyvoj.net"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Bio\\": "src/"
+        }
+    },
+
+    "require": {
+        "apitte/core": "~0.4.0",
+        "apitte/debug": "~0.4.0",
+        "apitte/middlewares": "~0.4.0",
+        "apitte/negotiation": "~0.4.0",
+        "contributte/console": "^0.5.0",
+        "contributte/console-extra": "^0.3.0",
+        "contributte/middlewares": "~0.7.0",
+        "doctrine/orm": "^2.6",
+        "nette/di": "~2.4.0",
+        "nette/http": "~2.4.0",
+        "nettrine/orm": "^0.2.1",
+        "psr/http-message": "^1.0",
+        "ramsey/uuid": "^3.8",
+        "tracy/tracy": "^2.5",
+        "rbdwllr/reallysimplejwt": "^1.0",
+        "lcobucci/jwt": "^3.2"
+    },
+
+    "require-dev": {
+        "nette/tester": "^2.0",
+        "phpstan/phpstan": "^0.10.3",
+        "phpstan/phpstan-nette": "^0.10.1",
+        "roave/security-advisories": "dev-master"
+    },
+
+    "scripts": {
+        "test": "vendor/bin/tester tests/cases/",
+        "phpstan": "vendor/bin/phpstan analyse -l max src/",
+        "purge": "rm -rf data/Temp/cache/*"
+    },
+
+    "scripts-descriptions": {
+        "test": "Run application tests",
+        "phpstan": "Run static analysis check",
+        "purge": "Purge all application caches"
+    }
+}

@@ -1,0 +1,7 @@
+data/Temp/*
+data/Log/*
+data/Keys/*
+vendor/*
+src/Config/config.local.neon
+
+!.gitignore
