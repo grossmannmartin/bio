@@ -9,5 +9,11 @@ extensions:
     doctrineDebug: Bio\Core\Doctrine\DoctrineDebugVoidCacheExtension
     diCacheGenerator: Bio\Core\DiCacheGeneratorExtension
 
+    accessControl: Bio\Core\AccessControl\AccessControlExtension
 
 
+accessControl:
+    issuer: https://api.vyvoj.net
+    audience: https://vyvoj.net
+    privateKeyPath: %baseDir%/data/Keys/private
+    publicKeyPath: %baseDir%/data/Keys/public
