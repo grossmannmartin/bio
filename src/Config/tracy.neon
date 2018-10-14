@@ -1,0 +1,4 @@
+tracy:
+    browser: open /Applications/Safari.app
+    showLocation: true
+

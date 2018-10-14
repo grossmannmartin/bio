@@ -1,0 +1,34 @@
+extensions:
+    dbal: Nettrine\DBAL\DI\DbalExtension
+    orm: Nettrine\ORM\DI\OrmExtension
+    orm.annotations: Nettrine\ORM\DI\OrmAnnotationsExtension
+    orm.cache: Nettrine\ORM\DI\OrmCacheExtension
+    orm.console: Nettrine\ORM\DI\OrmConsoleExtension(%consoleMode%)
+
+
+dbal:
+    debug: %debugMode%
+    connection:
+        host: 127.0.0.1
+        user: user
+        password: pass
+        dbname: db
+        driver: pdo_pgsql
+        types:
+            email:
+                class: Bio\Core\Doctrine\Types\EmailType
+                commented: false
+        typesMapping:
+            email: string
+
+
+orm.annotations:
+    debug: %debugMode%
+    paths:
+        - %appDir%/App
+
+
+orm:
+    configuration:
+        proxyDir: '%tempDir%/proxies'
+        autoGenerateProxyClasses: false

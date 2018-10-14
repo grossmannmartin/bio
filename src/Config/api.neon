@@ -1,0 +1,22 @@
+extensions:
+    api: Apitte\Core\DI\ApiExtension
+    middlewares: Contributte\Middlewares\DI\MiddlewaresExtension
+
+
+middlewares:
+    middlewares:
+        - Contributte\Middlewares\TryCatchMiddleware
+        - Contributte\Middlewares\AutoBasePathMiddleware
+        - Apitte\Middlewares\ApiMiddleware
+
+
+api:
+    debug: %debugMode%
+    plugins:
+        Apitte\Debug\DI\DebugPlugin:
+        Apitte\Middlewares\DI\MiddlewaresPlugin:
+        Apitte\Core\DI\Plugin\CoreDecoratorPlugin:
+        Apitte\Core\DI\Plugin\CoreMappingPlugin:
+        Apitte\Negotiation\DI\NegotiationPlugin:
+            unification: on
+            catchException: on

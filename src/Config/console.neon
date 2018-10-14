@@ -1,0 +1,8 @@
+extensions:
+    console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+
+
+console:
+    name: Martin Grossmann / Bio
+    url: https://vyvoj.net
+    lazy: true

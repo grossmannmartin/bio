@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Bio\Config;
+namespace Bio\Core\Doctrine;
 
 use Doctrine\Common\Cache\VoidCache;
 use Doctrine\ORM\Configuration;
 use Nette\DI\CompilerExtension;
 
 
-class DebugExtension extends CompilerExtension {
+class DoctrineDebugVoidCacheExtension extends CompilerExtension {
 
     public function beforeCompile(): void {
         $containerBuilder = $this->getContainerBuilder();

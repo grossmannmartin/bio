@@ -1,14 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Bio\Config;
+namespace Bio\Core;
 
-use Bio\Core\ConfiguratorFactory;
 use Contributte\Console\Extra\Cache\Generators\DiContainersCacheGenerator;
 use Contributte\Console\Extra\Command\AdvancedCache\CacheGenerateCommand;
 use Nette\DI\CompilerExtension;
 
 
-class CliExtension extends CompilerExtension {
+class DiCacheGeneratorExtension extends CompilerExtension {
 
     public function loadConfiguration(): void {
         $containerBuilder = $this->getContainerBuilder();
