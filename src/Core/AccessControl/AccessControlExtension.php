@@ -2,6 +2,8 @@
 
 namespace Bio\Core\AccessControl;
 
+use Bio\Core\AccessControl\Signer\ISigner;
+use Bio\Core\AccessControl\Signer\KeySigner;
 use Bio\Exceptions\Logic\LogicException;
 use Nette\DI\CompilerExtension;
 
@@ -26,18 +28,25 @@ class AccessControlExtension extends CompilerExtension {
         }
 
         $containerBuilder->addDefinition($this->prefix('token'))
-                         ->setType(Token::class)
+                         ->setType(TokenGenerator::class)
                          ->setArguments(
                              [
                                  'issuer' => $config['issuer'],
                                  'audience' => $config['audience'],
-                                 'privateKeyPath' => $config['privateKeyPath'],
-                                 'publicKeyPath' => $config['publicKeyPath'],
                              ]
                          );
 
         $containerBuilder->addDefinition($this->prefix('authenticator'))
                          ->setType(JwtAuthenticator::class);
+
+        $containerBuilder->addDefinition($this->prefix('signer'))
+                         ->setType(ISigner::class)
+                         ->setFactory(
+                             KeySigner::class, [
+                                 'privateKeyPath' => $config['privateKeyPath'],
+                                 'publicKeyPath' => $config['publicKeyPath'],
+                             ]
+                         );
     }
 
 }

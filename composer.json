@@ -16,6 +16,12 @@
         }
     },
 
+    "autoload-dev": {
+        "psr-4": {
+            "BioTest\\Fixtures\\": "tests/fixtures/"
+        }
+    },
+
     "require": {
         "apitte/core": "~0.4.0",
         "apitte/debug": "~0.4.0",
@@ -39,7 +45,8 @@
         "nette/tester": "^2.0",
         "phpstan/phpstan": "^0.10.3",
         "phpstan/phpstan-nette": "^0.10.1",
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-master",
+        "mockery/mockery": "^1.2"
     },
 
     "scripts": {

@@ -29,9 +29,9 @@ class JwtAuthenticator implements IAuthenticator {
 
 
     /**
-     * @var Token
+     * @var TokenGenerator
      */
-    protected $token;
+    protected $tokenGenerator;
 
     /**
      * @var IRouter
@@ -40,8 +40,8 @@ class JwtAuthenticator implements IAuthenticator {
 
 
 
-    public function __construct(Token $token, IRouter $router) {
-        $this->token = $token;
+    public function __construct(TokenGenerator $tokenGenerator, IRouter $router) {
+        $this->tokenGenerator = $tokenGenerator;
         $this->router = $router;
     }
 
@@ -93,7 +93,7 @@ class JwtAuthenticator implements IAuthenticator {
             return null;
         }
 
-        $identity = $this->token->verify($stringToken);
+        $identity = $this->tokenGenerator->verify($stringToken);
 
         if ($identity === null) {
             throw AuthenticationException::invalidToken();

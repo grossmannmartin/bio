@@ -3,14 +3,13 @@
 namespace Bio\Core\AccessControl;
 
 use Bio\Core\AccessControl\Identity\Identity;
+use Bio\Core\AccessControl\Signer\ISigner;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Parser;
-use Lcobucci\JWT\Signer\Key;
-use Lcobucci\JWT\Signer\Rsa\Sha512;
 use Nette\SmartObject;
 
 
-final class Token {
+final class TokenGenerator {
 
     use SmartObject;
 
@@ -26,29 +25,16 @@ final class Token {
     private $audience;
 
     /**
-     * @var Key
-     */
-    private $privateKey;
-
-    /**
-     * @var Key
-     */
-    private $publicKey;
-
-    /**
-     * @var Sha512
+     * @var ISigner
      */
     private $signer;
 
 
 
-    public function __construct(string $issuer, string $audience, string $privateKeyPath, string $publicKeyPath) {
-        $this->privateKey = new Key('file://' . realpath($privateKeyPath));
-        $this->publicKey = new Key('file://' . realpath($publicKeyPath));
-
+    public function __construct(string $issuer, string $audience, ISigner $signer) {
         $this->issuer = $issuer;
         $this->audience = $audience;
-        $this->signer = new Sha512();
+        $this->signer = $signer;
     }
 
 
@@ -66,9 +52,9 @@ final class Token {
               ->set('uid', $id)
               ->set('data', $data);
 
-        $token->sign($this->signer, $this->privateKey);
+        $signedToken = $this->signer->sign($token);
 
-        return (string)$token->getToken();
+        return (string)$signedToken->getToken();
     }
 
 
@@ -79,7 +65,7 @@ final class Token {
 //         @todo: Check issuer and audience
 //         @todo: Check if 'jti' is not blacklisted (also add jti blacklisting ie. user is banned, removed from admin, etc.)
 
-        if ($jwtToken->isExpired() || !$jwtToken->verify($this->signer, $this->publicKey)) {
+        if ($jwtToken->isExpired() || !$this->signer->verify($jwtToken)) {
             return null;
         }
 
