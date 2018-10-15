@@ -1,9 +1,11 @@
 <?php
 
-namespace Bio\App\EmailAddress;
+namespace BioTest\App\EmailAddress;
 
 require __DIR__ . '/../../../../bootstrap.php';
 
+use Bio\App\EmailAddress\EmailAddress;
+use Bio\App\EmailAddress\InvalidEmailAddressException;
 use Tester\Assert;
 use Tester\TestCase;
 
