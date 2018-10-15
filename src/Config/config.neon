@@ -10,6 +10,7 @@ extensions:
     diCacheGenerator: Bio\Core\DiCacheGeneratorExtension
 
     accessControl: Bio\Core\AccessControl\AccessControlExtension
+    - Bio\App\Author\AuthorExtension
 
 
 accessControl:
