@@ -11,6 +11,7 @@ extensions:
 
     accessControl: Bio\Core\AccessControl\AccessControlExtension
     - Bio\App\Author\AuthorExtension
+    - Bio\App\Article\ArticleExtension
 
 
 accessControl:

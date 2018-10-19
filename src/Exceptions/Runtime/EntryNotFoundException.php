@@ -9,4 +9,10 @@ class EntryNotFoundException extends RuntimeException {
         return new self('Requested record does not exists.');
     }
 
+
+
+    public static function invalidId(): EntryNotFoundException {
+        return new self('Requested record does not exists.');
+    }
+
 }
