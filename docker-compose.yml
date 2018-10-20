@@ -1,0 +1,32 @@
+version: "2"
+services:
+    nginx:
+        build:
+            context: docker/nginx
+        links:
+            - php
+        restart: always
+        volumes_from:
+            - data
+        ports:
+            - "80:80"
+            - "443:443"
+
+    php:
+        image: dockette/php:7.1-fpm
+        links:
+            - db
+        restart: always
+        volumes_from:
+            - data
+
+    db:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: example
+
+    data:
+        image: busybox
+        volumes:
+            - .:/srv

@@ -9,7 +9,7 @@ extensions:
 dbal:
     debug: %debugMode%
     connection:
-        host: 127.0.0.1
+        host: db
         user: user
         password: pass
         dbname: db
