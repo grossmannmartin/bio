@@ -159,7 +159,7 @@ final class ArticleController implements IController {
         $articleData = ArticleRequestMapper::dataFromRequest($request);
 
         try {
-            $article = $this->updateArticleFacade->updateArticle($id, $articleData->getHeading(), $articleData->getContent());
+            $article = $this->updateArticleFacade->updateArticle($id, $articleData->getHeading(), $articleData->getContent(), $articleData->getLead());
 
             return $response->withEntity(ArticleResponseData::fromArticle($article)->toArrayEntity());
 
