@@ -13,7 +13,7 @@ services:
             - "443:443"
 
     php:
-        image: dockette/php:7.1-fpm
+        image: dockette/php:7.2-fpm
         links:
             - db
         restart: always
