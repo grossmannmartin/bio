@@ -32,7 +32,7 @@
         "contributte/middlewares": "~0.7.0",
         "doctrine/orm": "^2.6",
         "nette/di": "~2.4.0",
-        "nette/http": "~2.4.0",
+        "nette/http": "~3.0.0",
         "nettrine/orm": "^0.2.1",
         "psr/http-message": "^1.0",
         "ramsey/uuid": "^3.8",
