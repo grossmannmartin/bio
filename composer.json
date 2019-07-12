@@ -27,7 +27,7 @@
         "apitte/debug": "~0.4.0",
         "apitte/middlewares": "~0.4.0",
         "apitte/negotiation": "~0.4.0",
-        "contributte/console": "^0.5.0",
+        "contributte/console": "^0.6",
         "contributte/console-extra": "^0.3.0",
         "contributte/middlewares": "~0.7.0",
         "doctrine/orm": "^2.6",
