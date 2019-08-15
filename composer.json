@@ -37,7 +37,7 @@
         "psr/http-message": "^1.0",
         "ramsey/uuid": "^3.8",
         "tracy/tracy": "^2.5",
-        "rbdwllr/reallysimplejwt": "^1.0",
+        "rbdwllr/reallysimplejwt": "^2.1",
         "lcobucci/jwt": "^3.2"
     },
 
