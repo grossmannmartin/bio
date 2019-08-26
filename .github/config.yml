@@ -1,1 +1,2 @@
 COMMIT_MESSAGE_REGEX: ^((?!fixup!).)*$
+PR_TITLE_REGEX: .*
